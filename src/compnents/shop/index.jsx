@@ -18,7 +18,7 @@ const Shop = () => {
         products.map((item, index) => {
           return (
             <Link
-              to={`/product/${item.id}`}
+              to={`/shop/${item.id}`}
               className="my-3 col-4 px-3"
               key={index}
             >
@@ -36,7 +36,7 @@ const Shop = () => {
             </Link>
           );
         })
-      ) : (
+      ) : 
         <Spinner
           className="mx-auto d-block my-5"
           animation="border"
@@ -44,7 +44,7 @@ const Shop = () => {
         >
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-      )}
+      }
     </div>
   );
 };

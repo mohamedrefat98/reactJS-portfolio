@@ -1,26 +1,29 @@
 import React from "react";
 import { Nav, Container, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 
 const NavbarComponent = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand><Link className="nav-link" to="/">Portofolio</Link></Navbar.Brand>
+          <Navbar.Brand><NavLink className="nav-link" to="/">Portofolio</NavLink></Navbar.Brand>
           <Nav className="ms-auto">
-            <Link className="ms-3 nav-link" to="/">
+            <NavLink className="ms-3 nav-link" to="/">
               Home
-            </Link>
-            <Link className="ms-3 nav-link" to="/about">
+            </NavLink>
+            <NavLink className="ms-3 nav-link" to="/about">
               About
-            </Link>
-            <Link className="ms-3 nav-link" to="/shop">
+            </NavLink>
+            <NavLink className="ms-3 nav-link" to="/shop">
               Shop
-            </Link>
-            <Link className="ms-3 nav-link" to="counter">
+            </NavLink>
+            <NavLink className="ms-3 nav-link" to="counter">
               Counter
-            </Link>
+            </NavLink>
+            <NavLink className="ms-3 nav-link" to="/todo">
+              ToDo
+            </NavLink>
           </Nav>
         </Container>
       </Navbar>
