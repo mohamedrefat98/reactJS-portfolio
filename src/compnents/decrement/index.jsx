@@ -1,10 +1,18 @@
 import React from "react";
-function Decrement({decrease}) {
+import { useDispatch } from "react-redux";
+import {decrease} from "./../../redux/features/counterSlice"
+function Decrement() {
+
+  const dispatch = useDispatch();
+  const onDecrease = ()=>{
+    dispatch(decrease())
+  }
+
   return (
     <>
       <button
-        className="btn btn-danger px-5 py-2 mx-2"
-        onClick={decrease}
+        className="btn btn-danger px-3 py-1 mx-2"
+        onClick={onDecrease}
       >
         -
       </button>

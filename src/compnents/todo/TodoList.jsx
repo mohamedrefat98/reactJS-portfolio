@@ -1,11 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteTodoAction } from "./../../redux";
 import { useSelector } from 'react-redux'
+import { deleteTodo } from '../../redux/features/todoSlice';
 
 const TodoList = () => {
 
-  const todos = useSelector(state=>state.todos);
+  const todos = useSelector(state=>state.persistedTodoReducer.todos);
 
 
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const TodoList = () => {
               <p>Title : {todo.title}</p>
               <p>Content : {todo.content}</p>
             </div>
-            <button className='btn btn-danger' onClick={()=>{dispatch(deleteTodoAction(i))}}>X</button>
+            <button className='btn btn-danger' onClick={()=>{dispatch(deleteTodo(i))}}>X</button>
             </li>
           </ul>
         );

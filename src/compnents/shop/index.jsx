@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Card, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {useDispatch,useSelector} from 'react-redux'
+import { getProducts } from "../../redux/features/shopSlice";
 
 const Shop = () => {
-  const [products, setProducts] = useState(null);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        setProducts(json);
-      });
+    dispatch(getProducts());
   }, []);
+
+  const products = useSelector(state=>state.shopReducer.products);
+  const loading = useSelector(state=>state.shopReducer.loading);
 
   return (
     <div className="row">
-      {products ? (
+      {!loading ? (
         products.map((item, index) => {
           return (
             <Link
@@ -29,7 +31,7 @@ const Shop = () => {
                 <Card.Body>
                   <Card.Title className="my-3">{item.title}</Card.Title>
                   <Card.Text className="text-primary">
-                    {item.price} EGP
+                    {item.price} $
                   </Card.Text>
                 </Card.Body>
               </Card>

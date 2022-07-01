@@ -1,10 +1,18 @@
 import React from "react";
-const Increment = ({increase}) => {
+import { useDispatch } from "react-redux";
+import {increase} from '../../redux/features/counterSlice'
+const Increment = () => {
+
+  const dispatch = useDispatch();
+  const onIncrease = ()=>{
+    dispatch(increase())
+  }
+
   return (
     <>
       <button
-        className="btn btn-primary px-5 py-2 mx-2"
-        onClick={increase}
+        className="btn btn-primary px-3 py-1 mx-2"
+        onClick={onIncrease}
       >
         +
       </button>

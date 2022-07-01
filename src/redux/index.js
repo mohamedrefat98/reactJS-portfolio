@@ -1,45 +1,33 @@
-import {createStore} from "redux";
+import {configureStore } from "@reduxjs/toolkit";
+import todoReducer from './features/todoSlice'
+import counterReducer from './features/counterSlice';
+import shopReducer from './features/shopSlice'
+import productReducer from "./features/productSlice";
 
+// persist configs to save data
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+// import thunk from 'redux-thunk';
 
-const ADD_TYPE = "ADD_TODO"
-const DELETE_TYPE = "DELETE_TODO"
+const persistConfig = {
+    key: 'root',
+    storage,
+  };
 
-//Actions 
-export const addTodoAction =(payload) => {
-    return{
-        type : ADD_TYPE,
-        payload : payload
-    }
-}
-
-export const deleteTodoAction =(payload) => {
-    return{
-        type : DELETE_TYPE,
-        payload :payload
-    }
-}
-
-
-//initial state 
-const initailState = {
-    todos : []
-}
-
-
-//Reducers
-
-export const todoReducer = (state = initailState , action) =>{
-    if (action.type===ADD_TYPE){
-        return{...state,todos:[...state.todos,action.payload]}
-    }if(action.type===DELETE_TYPE){
-        return{...state,todos:[...state.todos.filter((item,index)=>{return index !== action.payload})]}
-    }
-    return state;
-}
+const persistedTodoReducer = persistReducer(persistConfig, todoReducer);
 
 
 
-export const store = createStore(
-    // reducer 
-    todoReducer
-) ;
+/***********************************************************************/
+
+export const store = configureStore({
+    reducer:{
+        persistedTodoReducer,
+        counterReducer,
+        shopReducer,
+        productReducer
+    },
+    // middleware: [thunk]
+}) ;
+
+export const persistor = persistStore(store)
