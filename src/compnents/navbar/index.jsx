@@ -12,14 +12,14 @@ const NavbarComponent = () => {
             <NavLink className="ms-3 nav-link" to="/">
               Home
             </NavLink>
-            <NavLink className="ms-3 nav-link" to="/about">
-              About
+            <NavLink className="ms-3 nav-link" to="/contactUs">
+              Contact Us
             </NavLink>
             <NavLink className="ms-3 nav-link" to="/shop">
               Shop
             </NavLink>
             <NavLink className="ms-3 nav-link" to="counter">
-              Counter
+              Support
             </NavLink>
             <NavLink className="ms-3 nav-link" to="/todo">
               ToDo

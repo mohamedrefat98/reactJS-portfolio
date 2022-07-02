@@ -1,5 +1,5 @@
 import React from "react";
-import About from "../../compnents/about";
+import ContactUs from "../../compnents/contactUs";
 import NavbarComponent from "../../compnents/navbar";
 import Shop from "../../compnents/shop";
 import Counter from "../counter/counter";
@@ -16,7 +16,7 @@ const RoutesComponent = () => {
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/contactUs" element={<ContactUs />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/todo" element={<Todo />} />
